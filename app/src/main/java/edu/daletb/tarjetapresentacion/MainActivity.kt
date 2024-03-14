@@ -8,7 +8,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -51,87 +51,105 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
 @Composable
 fun TarjetaPresentacion() {
-    Column(
-        modifier = Modifier
-        .fillMaxHeight()
-        .fillMaxWidth()
-        .background(color = colorResource(id = R.color.yellow_200)),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ){
-        val img = painterResource(id = R.drawable.android_logo)
-        Image(
-            painter = img, contentDescription = null, modifier = Modifier
-                .background(color = colorResource(id = R.color.blue_gray_900))
-                .height(120.dp)
-                .width(150.dp)
-        )
-        Text(
-            text = stringResource(R.string.texto_nombre),
-        )
-        Text(
-            text = stringResource(R.string.texto_ocupacion),
-            color = colorResource(id = R.color.orange_800)
-        )
+    Column(modifier = Modifier.background(color = colorResource(id = R.color.yellow_200))){
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth()
+                .weight(1f),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            val img = painterResource(id = R.drawable.android_logo)
+            Image(
+                painter = img,
+                contentDescription = null,
+                modifier = Modifier
+                    .background(color = colorResource(id = R.color.blue_gray_900))
+                    .height(120.dp)
+                    .width(150.dp)
+            )
+            Text(
+                text = stringResource(R.string.texto_nombre),
+            )
+            Text(
+                text = stringResource(R.string.texto_ocupacion),
+                color = colorResource(id = R.color.orange_800)
+            )
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 70.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            //verticalArrangement = Arrangement.Bottom
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 40.dp)
+            ) {
+                TarjetaContacto(
+                    icono = Icons.Default.Call,
+                    descripcion = "Ícono de un telefono",
+                    tint = Color())
+                Icon(
+                    imageVector = Icons.Default.Call,
+                    contentDescription = null,
+                    tint = Color(0xFFEF6C00)
+                )
+                Text(
+                    text = stringResource(R.string.texto_numero_telefonico),
+                    modifier = Modifier.padding(start = 25.dp)
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 40.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Share,
+                    contentDescription = null,
+                    tint = Color(0xFFEF6C00)
+                )
+                Text(
+                    text = stringResource(R.string.texto_nombre_usuario),
+                    modifier = Modifier.padding(start = 25.dp)
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 40.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Email,
+                    contentDescription = null,
+                    tint = Color(0xFFEF6C00)
+                )
+                Text(
+                    text = stringResource(R.string.texto_correo_electronico),
+                    modifier = Modifier.padding(start = 25.dp)
+                )
+            }
+        }
     }
-
-    Column(
+}
+@Composable
+fun TarjetaContacto(icono: ImageVector, descripcion: String){
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 500.dp)
-            .padding(bottom = 70.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Bottom
+            .padding(start = 40.dp)
     ){
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 40.dp)
-        ){
-            Icon(
-                imageVector = Icons.Default.Call,
-                contentDescription = null,
-                tint = Color(0xFFEF6C00)
-            )
-            Text(
-                text = stringResource(R.string.texto_numero_telefonico),
-                modifier = Modifier.padding(start = 25.dp)
-            )
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 40.dp)
-            ){
-            Icon(
-                imageVector = Icons.Default.Share,
-                contentDescription = null,
-                tint = Color(0xFFEF6C00)
-            )
-            Text(
-                text = stringResource(R.string.texto_nombre_usuario),
-                modifier = Modifier.padding(start = 25.dp)
-            )
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 40.dp)
-            ){
-            Icon(
-                imageVector = Icons.Default.Email,
-                contentDescription = null,
-                tint = Color(0xFFEF6C00)
-            )
-            Text(
-                text = stringResource(R.string.texto_correo_electronico),
-                modifier = Modifier.padding(start = 25.dp)
-            )
-        }
+        Icon(
+            imageVector = icono,
+            contentDescription = String())
     }
+
 }
 
 @Preview(showBackground = true)

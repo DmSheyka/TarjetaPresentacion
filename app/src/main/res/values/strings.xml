@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tarjeta de Presentación</string>
+    <string name="texto_nombre">Dalet Sheyka Carrillo Belzu</string>
+    <string name="texto_ocupacion">Desarrollador Android Extraordinario</string>
+    <string name="texto_numero_telefonico">+591 69737499</string>
+    <string name="texto_nombre_usuario">\@Dalet_sheyka</string>
+    <string name="texto_correo_electronico">dcarrillobelzu@gmail.com</string>
+</resources>
